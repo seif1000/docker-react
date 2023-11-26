@@ -7,6 +7,18 @@ jobs:
     steps:
       - checkout # Check out your repository's code
 
+      - run:
+          name: Install Docker
+          command: |
+            apk add --update --no-cache docker openrc
+            rc-update add docker boot
+            service docker start
+
+      - run:
+          name: Start Docker Service
+          command: |
+            service docker start
+
       # Build the Docker image
       - run:
           name: Build Docker image
