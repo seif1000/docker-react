@@ -5,3 +5,17 @@ before_install:
   - docker build -t seif1000/docker-react -f Dockerfile.dev .
 script:
   - docker run -e CI=true seif1000/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-app"
+  env: "Docker-app-env"
+  bucket_name: "elasticbeanstalk-us-east-1-303079253020"
+  bucket_path: "docker-app"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+#rUdBYHdeozTbonsy3v5h3tsWKA/XJoR5L1C+I911
+#AKIAUNEHOMQOA5DRWO4R
