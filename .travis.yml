@@ -1,4 +1,5 @@
 sudo: required
+
 services:
   - docker
 before_install:
@@ -9,13 +10,13 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "docker-app"
+  app: "docker"
   env: "Docker-app-env"
   bucket_name: "elasticbeanstalk-us-east-1-303079253020"
-  bucket_path: "docker-app"
+  bucket_path: "docker"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
   on:
     branch: main
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY"
-#rUdBYHdeozTbonsy3v5h3tsWKA/XJoR5L1C+I911
-#AKIAUNEHOMQOA5DRWO4R
+#JTXQICmVr6rYc+l0rlICFU7pRsqTwa/CeON4YngC
+#AKIAUNEHOMQOC6IRBB25
